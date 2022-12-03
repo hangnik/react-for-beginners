@@ -1,10 +1,16 @@
 import { useCallback, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-// loading 추가, json State에 넣어서 detail 페이지 완성하기~
+import { useNavigate, useParams } from "react-router-dom";
+import Loading from "../components/Loading";
+import Point from "../components/Point";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import styles from "./Detail.module.css";
+
 function Detail(){
     const [loading, setLoading] = useState(true);
     const [movie, setMovie] = useState([]);
     const {id} = useParams();
+    const navigate = useNavigate();
     const getMovie = useCallback(async () => {
         const json = await(
             await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`)
@@ -17,17 +23,30 @@ function Detail(){
     }, [getMovie]);
     return (
         <div>
-            {loading ? <h1>loading...</h1> :
-            <div>
-                <div key={movie.id}>
-                    <img src={movie.medium_cover_image} alt="" />
-                    <h1>{movie.title}</h1>
-                    <h3>rate : {movie.rating}</h3>
-                    <h3>runtime : {movie.runtime}m</h3>
-                    <h5>summary : {movie.description_intro}</h5>
-                </div>
+            <div className={styles.header}>
+                <Header />
             </div>
-            }
+            {loading ? (
+                <Loading />
+            ) : (
+            <div className={styles.info}>
+                <Point
+                    navigate = {navigate}
+                    background_image={movie.background_image_original}
+                    cover_image={movie.medium_cover_image}
+                    url={movie.url}
+                    title={movie.title}
+                    year={movie.year}
+                    rating={movie.rating}
+                    runtime={movie.runtime}
+                    genres={movie.genres}
+                    summary={movie.description_intro}
+                />
+                </div>
+            )}
+            <div className={styles.footer}>
+                <Footer />
+            </div>
         </div>
     );
 }

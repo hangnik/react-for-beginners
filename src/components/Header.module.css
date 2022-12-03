@@ -1,0 +1,12 @@
+.navbar_brand a {
+    text-decoration: none;
+    color: brown;
+    font-size: 30px;
+    font-weight: bolder;
+} 
+
+.nav_link {
+    margin: 0 30px;
+    font-size: 18px;
+    font-weight: 500;
+}

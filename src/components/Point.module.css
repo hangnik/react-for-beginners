@@ -1,0 +1,64 @@
+.movie {
+    color: #fff;
+}
+
+.bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    filter: brightness(50%);
+}
+
+.show {
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    width: 50%;
+    z-index: 8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid whitesmoke;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.textbox {
+    padding-left: 15px;
+}
+
+.title a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.title:hover {
+    text-decoration: underline;
+}
+
+.year {
+    padding-right: 7px;
+    border-right: 1px solid rgb(121, 121, 121);
+}
+
+.genres {
+    padding-left: 7px;
+}
+
+.backBtn {
+    position: absolute;
+    top: 2%;
+    right: 1%;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+}
+
+.backBtn:hover  {
+    color: rgb(255, 55, 0);
+}
+
+
